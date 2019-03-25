@@ -1,0 +1,62 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.98",
+	"appid": "wx7e59969390fa6696",
+	"projectname": "oneDollerBill",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 2,
+			"list": [
+				{
+					"id": 0,
+					"name": "分享进入",
+					"pathName": "pages/index/index",
+					"query": "query_id=1096",
+					"scene": "1007"
+				},
+				{
+					"id": 1,
+					"name": "课程进入",
+					"pathName": "pages/index/index",
+					"query": "share_course=2",
+					"scene": "1008"
+				},
+				{
+					"id": 2,
+					"name": "二维码",
+					"pathName": "pages/index/index",
+					"query": "share_course=2",
+					"scene": "1012"
+				}
+			]
+		}
+	}
+}

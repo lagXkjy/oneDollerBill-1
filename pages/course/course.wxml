@@ -1,0 +1,81 @@
+<!--pages/course/course.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<view class='course bg-fff mar-b-31 bor-tb-1'>
+  <swiper
+  indicator-dots
+  indicator-color
+  autoplay
+  style='height:380rpx;'
+   class='wid100'>
+    <block wx:for="{{datas.CouImages}}" wx:key="{{index}}">
+      <swiper-item>
+        <image src='{{host+item}}' class='wid100' mode='widthFix'></image>
+      </swiper-item>
+    </block> 
+  </swiper>
+  <view class='mar-l-33 mar-r-20 mar-t-33 font-42 wid-690'>{{datas.CourseTitle}}</view>
+  <view class='flex mar-l-33 mar-t-11'>
+    <view hidden='{{!datas.CouPrice}}' class='font-48 price red bold'><text class=''>￥</text>{{datas.CouPrice}}</view>
+    <view hidden='{{!datas.CouPrice}}' class='font-22 price-before gray'>原价：<text class='line-through'>￥{{datas.CouOriginalPrice}}</text></view>
+  </view>
+</view>
+<!--课程介绍  -->
+<view class="content bg-fff mar-b-31">
+  <view class='lin-h-50 font-36 pad-tb-32'>
+    <text class='gang bg-red'></text>课程介绍
+  </view>
+  <view class='wid100'>
+    <!-- <image src='/images/course1.png' class='wid100' mode='widthFix'></image> -->
+    <template class='wid100' is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+  
+</view>
+
+<location datas="{{props}}" /> 
+
+<view class='fix-b flex wid100 bg-fff'>
+  <view class='flex1 flex center v-center'>
+    <view 
+    bindtap='toIndex'
+    class='flex1 t-center hei100'>
+      <image src='/images/cash.png' class='icon-b'></image>
+      <view class='gray font-20'>领现金</view>
+    </view>
+    <view class='flex1 t-center hei100 bor-l-1 relative'>
+      <image src='/images/share2.png' class='icon-b'></image>
+      <view class='gray font-20'>分享</view>
+      <button open-type='share' class="share">分享</button>
+    </view>
+  </view>
+  <view bindtap='shareQuan' class='flex1 flex bg-dimred font-32 white center v-center bor-l-1'>保存海报</view>
+  <view bindtap='buy' class='flex1 flex bg-red font-32 white center v-center'>立即抢购</view>
+</view>
+<view 
+hidden='{{!postShow}}' 
+class='masker' 
+catchtouchmove='hidePost'
+catchtap='hidePost'>
+  <view 
+  class='bg-fff post-wrap relative bor-r-10' 
+  catchtouchmove='showPost'
+  catchtap='showPost'>
+    <view class='flex center wid100 '>
+      <image 
+      src='{{host+datas.Couimage}}' 
+      bindtap='preImage'
+      class='wid100 post-image'
+      mode='widthFix'></image>
+    </view>
+    <!-- <view class='flex center red font-40 mar-t-33'>
+      <view>“</view>
+      <view class='mar-t-19'>万名外教，轻松约课</view>
+      <view>”</view>
+    </view>
+    <view class='flex center red font-24 mar-t-19'>优选外教，不同时段随意挑选</view>
+    <view class='flex center mar-t-33'><image src='/images/erweima.png' mode='widthFix' class='erweima'></image></view>
+    <view class='flex center gray font-24 mar-t-19'>长按二维码查看课程详情</view> -->
+    <view 
+    bindtap='savepost'
+    class='bg-red white bth-save t-center'>保存海报</view>
+  </view>
+</view>

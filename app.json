@@ -1,0 +1,18 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/newindex/index",
+    "pages/mycourse/mycourse",
+    "pages/buyed/buyed",
+    "pages/orderdetail/orderdetail",
+    "pages/course/course",
+    "pages/tosureorder/tosureorder",
+    "components/location"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#b4533d",
+    "navigationBarTitleText": "提现活动",
+    "navigationBarTextStyle":"white"
+  }
+}

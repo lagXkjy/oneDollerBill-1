@@ -1,0 +1,62 @@
+/* pages/buyed/buyed.wxss */
+/* pages/course/course.wxss */
+page{
+  padding-bottom: 150rpx;
+}
+.course{
+  width:100%;
+  padding:30rpx;
+}
+.pic{
+  width:280rpx;
+   height:351rpx; 
+}
+.price{
+  border-radius:5rpx;
+  margin-right: 30rpx;
+  line-height: 70rpx;
+}
+.price-before{
+  line-height: 70rpx;
+}
+.line-through{
+  text-decoration:line-through 
+}
+.mar-t-33{
+  margin-top:33rpx;
+}
+.gang{
+  display: inline-block;
+  height: 50rpx;
+  width: 4rpx;
+  position: relative;
+  top:10rpx;
+  margin-right: 14rpx;
+}
+.content{
+  padding: 0 20rpx 30rpx;
+}
+.line-h-50{
+  line-height: 50rpx;
+}
+.pad-tb-32{
+  padding-bottom: 32rpx;
+  padding-top: 32rpx;
+}
+.icon{
+  width:38rpx;
+  margin:18rpx 23rpx ;
+}
+.icon-b{
+  width:38rpx;
+  height: 38rpx;
+  margin-top: 19rpx;
+}
+
+.bor-l-1{
+  border-left: 1px solid #bfbfc3;
+}
+.yes{
+  width: 46rpx;
+  margin:47rpx  15rpx 38rpx 0;
+}

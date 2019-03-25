@@ -1,0 +1,286 @@
+<!--pages/newindex/index.wxml-->
+<!--头部  -->
+<location datas="{{}}"></location>
+<view class='head'>
+  <image src='/images/index_bg.png' class='index_bg'></image>
+  <view class='zhanwei'></view>
+  <view class='flex center red v-bottom '>
+    <text class='font-54'>￥</text><text class='font-72 bold'>{{money}}</text>
+  </view>
+  <view class='flex center gold font-26 mar-t-19'>
+    <text class='gezi'>{{time.hours}}</text>
+    <text>时</text>
+    <text class='gezi'>{{time.minutes}}</text>
+    <text>分</text>
+    <text class='gezi'>{{time.seconds}}</text>
+    <text hidden='{{!tixian}}'>后再发起</text>
+    <text hidden='{{tixian}}'>后过期</text>
+  </view>
+  <view class='flex center relative mar-t-16'>
+    <!-- <view class='relative'> -->
+      <view hidden='{{tixian}}' class='t-center red font-24 pad-lr-10 '>
+      <!-- 未提现 -->
+        <text wx:if="{{money < 1}}">差 {{money_left}}元可提现</text>
+        <text wx:else class=''>恭喜您可以提现了</text>
+      </view>
+      <view hidden='{{!tixian}}' class='t-center red font-24 pad-lr-10 '>
+        <text>您已提现成功</text>
+      </view>
+      <image src='/images/msg.png' class='msg' mode=''></image>
+    <!-- </view> -->
+  </view>
+  <view class='flex center v-center '>
+    <view class='gradient-wrapper'>
+      <view class='gradient' style='width:{{money*100}}%'></view>
+    </view>
+    <image
+    wx:if='{{money >= 1 && !tixian}}'
+    src='/images/bill_y.png' class='bill' bindtap='bill'></image>
+    <image
+    wx:else
+    src='/images/bill_n.png' class='bill' bindtap='bill'></image>
+  </view>
+  <view class='flex center mar-t-11'>
+    <image 
+    wx:if='{{money < 1 && !tixian}}'
+    class='help ani' 
+    mode='widthFix' 
+    src='/images/help.png' 
+    animation="{{big}}"></image>
+    <image 
+    wx:else
+    class='help ani' 
+    mode='widthFix' 
+    src='/images/join.png' 
+    animation="{{big}}"></image>
+    <button class='btn-share' open-type='share'>分享</button>
+    <button class='btn-share' hidden="{{avatarUrl}}" bindtap='showhelp'>登陆</button>
+  </view>
+  <view class='flex  bg-dim mar-t-31'>
+    <view class='red font-22'>
+      <view>红包</view>
+      <view>记录</view>
+    </view>
+    <view class='divid'></view>
+    <scroll-view scroll-x class='scroll-wrap'>
+      <view class='flex scroll-content' style='width:{{help_number*80+200}}rpx'>
+        <!-- <scroll-view scroll-x class='flex' class> -->
+        <view wx:if="{{tixian || money}}" class='flex center t-center relative helper'>
+          <image class='help_avatar' src='{{avatarUrl}}'></image>
+          <view class='bg-gold white help-money font-20'>{{money_init}}</view>
+        </view>
+
+        <block wx:for="{{arr_helpme}}" wx:key>
+          <view class='felx t-center relative helper'>
+            <image class='help_avatar' src='{{item.userImage}}'></image>
+            <view class='bg-gold white help-money font-20'>{{item.powMoney}}</view>
+          </view>
+        </block>
+        
+      <!-- </scroll-view> -->
+        <view>
+          <image src='/images/share.png' class='share helper relative'>
+            <button class='small-btn-share' open-type='share'>分享</button>
+            <button class='small-btn-share' 
+            bindtap='showhelp'
+            hidden='{{avatarUrl}}'
+            >登陆</button>
+          </image>
+          <block wx:for="{{help_number - arr_helpme.length}}" wx:key>
+            <image src='/images/add.png' class='share helper'></image>
+          </block>
+          <!-- <image src='/images/add.png' class='share helper'></image>
+          <image src='/images/add.png' class='share helper'></image>
+          <image src='/images/add.png' class='share helper'></image>
+          <image src='/images/add.png' class='share helper'></image> -->
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<!-- <view class='flex center'>
+  <image src='/images/recommend.png' class='recommend absolute' mode='widthFix'></image>
+  <view class='flex center font-28 red v-center' style='height:51rpx'>{{intro_title}}</view>
+</view>
+
+<view class='flex center gold font-22 mar-t-19'>{{intro_content}}</view> -->
+<!--推荐课程  -->
+<!-- <view hidden='{{courses.length}}' class='flex center v-center bg-fff gray gujia'>无数据</view>
+<block wx:for="{{courses}}" wx:key="{{index}}">
+  <view class='course bg-fff' bindtap='tocourse' data-course-id="{{item.CouId}}">
+    <image src="{{host+item.CouImages[0]}}" class='pic'></image>
+    <view class='mar-l-33 mar-r-20 mar-t-19 font-36'>{{item.CourseTitle}}</view>
+    <view class='flex mar-l-33 mar-t-33'>
+      <view class='font-36 price bg-red gold t-center bold'>
+        <text class='font-28'>￥</text>{{item.CouPrice}}</view>
+      <view class='font-22 price-before gray'>原价：<text class='line-through'>￥{{item.CouOriginalPrice}}</text></view>
+    </view>
+  </view>
+</block> -->
+
+<!-- 
+<view class='course bg-fff'>
+  <image src="/images/pic.png" class='pic'></image>
+  <view class='mar-l-33 mar-t-19 font-36'>零基础流利口语初级班</view>
+  <view class='flex mar-l-33 mar-t-33'>
+    <view class='font-28 price bg-red gold t-center'><text class='font-22'>￥</text>2323.00</view>
+    <view class='font-22 price-before gray'>原价：<text class='line-through'>2999.00</text></view>
+  </view>
+</view> -->
+
+<view class='flex center' style='margin-top:40rpx;'>
+  <image bindtap='toBa' src='/images/tu.png' style='width:70%' mode='widthFix'></image>
+</view>
+
+
+<!--右上角按钮   -->
+<view bindtap='showrule' class='tip-right rule bg-gold font-24 t-center white'>规则</view>
+<!-- <view bindtap='toOrder' class='tip-right dingdan bg-gold font-24 t-center white'>订单</view> -->
+<!--左上角按钮   -->
+<view  class='left-wrap'>
+  <view wx:if="{{billedUsers.length}}" class='tip-left flex' animation="{{msgs}}">
+    <image src='{{billedUsers[0].Image}}' class='help_avatar'></image>
+    <view class='font-20 red'>
+      <view>{{billedUsers[0].Nick}}</view>
+      <view>刚提现{{billedUsers[0].Withdrawal}}元</view>
+    </view>
+  </view>
+</view>
+<!--遮罩层  -->
+
+<view 
+hidden="{{(yue || rule || help || hongbao)? false : true}}" 
+class='mask' 
+catchtouchmove='hidemask'
+catchtap='hidemask'>
+<!-- 余额 待提现  -->
+<view 
+hidden="{{!yue}}" 
+class='yuewrap relative' 
+catchtap='showyue' 
+catchtouchmove='showyue'>
+  <image src='/images/tip_money.png' class='tip-money' mode='widthFix'></image>
+  <view class='flex center red v-bottom pad-t-220'>
+    <text class='font-72'>{{money}}</text><text class='font-54'>元</text>
+  </view>
+   <view class='flex center gold font-26 mar-t-127'>
+    <text class='gezi'>{{time.hours}}</text>
+    <text>时</text>
+    <text class='gezi'>{{time.minutes}}</text>
+    <text>分</text>
+    <text class='gezi'>{{time.seconds}}</text>
+    <text>后过期</text>
+  </view>
+  <view class='t-center white bg-red manti font-26'>满1元可提现到微信</view>
+  <view class='flex center redblack font-26'>经统计，约{{help_number}}人助力即可提现1元</view> 
+  <view class='flex center '>
+    <image 
+    wx:if='{{money < 1 && !tixian}}'
+    src='/images/help2.png' mode='widthFix' class='help2 ani'></image>
+    <image 
+    wx:else
+    src='/images/join2.png' mode='widthFix' class='help2 ani'></image>
+    <button class='btn-share' open-type='share'>分享</button>  
+    <button 
+    class='btn-share' 
+    open-type='getUserInfo' 
+    hidden='{{avatarUrl ? true:false}}' 
+    bindgetuserinfo='getUserInfo'>获取</button>
+  </view>
+</view>
+<!--规则  -->
+<view 
+catchtap="showrule" 
+catchtouchmove='showrule' 
+hidden="{{!rule}}" 
+class='guize bg-fff gold2 font-24'>
+  <view class='flex center font-40 deepgold bold mar-guize'>活动规则</view>
+  <view class='wrap-s'>
+    <scroll-view scroll-y class='scroll-guize'>
+      <view class='mar-t-guize'>参加本活动即表示您自愿接受以下活动规则：  </view>
+      <view class='mar-t-guize'>1）每次参加活动可领到1个红包任务，邀请好友助力，红包累计金额达到任务指定金额即可提现到微信。</view>
+      <view class='mar-t-guize'>2）现金红包有效期为<text class='red'>24小时</text>。现金红包需在<text class='red'>24小时</text>内提现，否则逾期无效</view>
+      <view class='mar-t-guize'>3）每日活动限定现金总额为人民币10元，先到先得。</view>
+    </scroll-view>
+  </view>
+  <view class='flex center t-center btn-zhuanqain gold bg-red font-48 ani'>
+    <text>马上赚钱</text>
+    <button class='btn-share' open-type='share'>分享</button>
+    <button 
+    class='btn-share' 
+    open-type='getUserInfo' 
+    hidden='{{avatarUrl}}'
+    bindgetuserinfo='getUserInfo'>获取</button>
+  </view>
+</view>
+<!--未登录   help 助力提示-->
+<view 
+catchtap='showhelp'
+class='relative help-wrap' hidden='{{!help}}'>
+  <image class='help-img' src='/images/login.png' mode='widthFix'></image>
+  <view class='hei-80 flex center'>
+  <!--用户头像  -->
+    <view class='avatar2-wrap'><image src='{{avatarUrl}}' class='wid100' mode='widthFix'></image></view>
+    <view class='flex v-center hei100 mar-l-15'>
+      <view class='triangle'></view>
+      <view class='bg-fff font-28 hei100 lin-hei80 text'>
+        <!-- <text hidden='{{avatarUrl}}'>请先登录</text> -->
+        <!-- <text wx:if='{{helped}}'>你已帮我助力过</text>
+        <text wx:if='{{guoqi}}'>红包任务已过期</text>
+        <text wx:if="{{help_first}}">帮助好友获得{{help_money}}元</text> -->
+        <text>{{tips_title}}</text>
+      </view>
+    </view>
+    <button 
+    class='btn-share' 
+    open-type='getUserInfo' 
+    hidden='{{avatarUrl ? true:false}}' 
+    data-help="1"
+    bindgetuserinfo='getUserInfo'>获取</button>
+  </view>
+  <!-- <view class='font-36 wid100 t-center mar-t-187'>你的待提现</view> -->
+  <!-- <view class='font-36 wid100 t-center mar-t-187'>为表达感谢，送你</view> -->
+  <view class='font-36 wid100 t-center mar-t-187'>{{tips_content}}</view>
+  <view class='golden font-42 wid100 t-center'><text class='font-60'>{{money}} </text> 元</view>
+  <view class='t-center white bg-red manti font-26 wid-400 mar-t-50'>邀请好友助力，满1元可提现</view>
+  <view class='flex center '>
+    <image 
+    wx:if='{{money < 1 && !tixian}}'
+    src='/images/help_3.png' mode='widthFix' class='help2 ani'></image>
+    <image 
+    wx:else
+    src='/images/yejoin.png' mode='widthFix' class='help2 ani'></image>
+    <button class='btn-share' open-type='share'>分享</button>  
+    <button 
+    class='btn-share' 
+    open-type='getUserInfo' 
+    hidden='{{avatarUrl ? true:false}}' 
+    data-help='1'
+    bindgetuserinfo='getUserInfo'>获取</button>
+  </view>
+</view>
+
+
+<!--红包  -->
+<view 
+hidden="{{!hongbao}}" 
+class='yuewrap relative' 
+catchtap='showhongbao' 
+catchtouchmove='showhongbao'>
+  <image src='/images/hongbao.png' class='tip-money' mode='widthFix'></image>
+  <view class='flex center red v-bottom pad-t-220'>
+    <text class='font-72'>{{money}}</text><text class='font-54'>元</text>
+  </view>
+  <view class='hei-300'></view>
+  <view class='flex center '>
+    <image src='/images/help2.png' mode='widthFix' class='help2 ani'></image>
+      <button class='btn-share' open-type='share'>分享</button>  
+    <button 
+    class='btn-share' 
+    open-type='getUserInfo' 
+    hidden='{{avatarUrl ? true:false}}' 
+    bindgetuserinfo='getUserInfo'>获取</button>
+  </view>
+</view>
+</view>

@@ -1,0 +1,4 @@
+/* pages/course/course.wxss */
+/**app.wxss**/
+@import '/app.wxss';
+@import '/pages/course/course.wxss';

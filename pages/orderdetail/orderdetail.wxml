@@ -1,0 +1,19 @@
+<!--pages/buyed/buyed.wxml-->
+<view class='content course bg-fff  flex pad-lr-30 mar-b-31 bor-tb-1'>
+  <image src="{{host+order.CouImages[0]}}" class='pic' mode='widthFix'></image>
+  <view>
+    <view class='mar-l-33 font-30'>{{order.CourseTitle}}</view>
+    <view class='flex mar-l-33'>
+      <view class='price red font-36 bold'><text class=''>￥</text>{{order.CouPrice}}</view>
+      <view class='font-24 price-before gray'>原价：<text class='line-through'>￥{{order.CouOriginalPrice}}</text></view>
+    </view>
+  </view>
+</view>
+<view class='content bg-fff mar-b-31 bor-tb-1  font-28'>
+  <view class=''>订单号：{{order.orderS}}  </view>
+  <view class='mar-t-19'>下单时间：{{createTime}}</view>
+  <view class='mar-t-19'>支付时间：{{payTime}}</view>
+</view>
+
+<location datas="{{props}}" /> 
+

@@ -1,0 +1,36 @@
+<!--pages/mycourse/mycourse.wxml-->
+<!--pages/buyed/buyed.wxml-->
+<view class='bg-fff lin-h-87 pad-lr-32 mar-b-31'>我报名的课程</view>
+
+<view hidden='{{orders.length}}' class='flex center v-center hei-300 gray'>无数据</view>
+<block wx:for="{{orders}}" wx:key="{{index}}">
+  <view class='pad-lr-32 pad-tb-24 bg-light bor-tb-1 font-26'>购买成功</view>
+  <view 
+  bindtap='toDetail'
+  data-orderid='{{item.orderId}}'
+  data-courseid="{{item.CouId}}"
+  class='course bg-fff  flex pad-lr-32 wid100 mar-b-31'>
+    <image src="{{host+item.CouImages[0]}}" class='pic' mode='widthFix'></image>
+    <view class='wid100'>
+      <view class='pad-lr-32 font-30 '>{{item.CourseTitle}}</view>
+      <view class='flex mar-l-33'>
+        <view class='price red font-36 bold'><text class=''>￥</text>{{item.CouPrice}}</view>
+        <view class='font-24 price-before gray'>原价：<text class='line-through'>￥{{item.CouOriginalPrice}}</text></view>
+      </view>
+    </view>
+  </view> 
+</block>
+ 
+<!-- <view class='pad-lr-32 pad-tb-24 bg-light bor-tb-1 font-26'>购买成功</view>
+<view class='course bg-fff  flex pad-lr-32 wid100 mar-b-31'>
+  <image src="/images/pic.png" class='pic' mode='widthFix'></image>
+  <view class='wid100'>
+    <view class='pad-lr-32 font-30 '>零基础直达流利口语中级【8 月通关A班】</view>
+    <view class='flex mar-l-33'>
+      <view class='price red font-36'><text class=''>￥</text>2323.00</view>
+      <view class='font-24 price-before gray'>原价：<text class='line-through'>2999.00</text></view>
+    </view>
+  </view>
+</view>  -->
+
+

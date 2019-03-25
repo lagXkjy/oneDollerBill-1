@@ -1,0 +1,35 @@
+<!--pages/buyed/buyed.wxml-->
+<view class='course bg-fff  flex pad-lr-30'>
+  <image src="{{course_banner}}" class='pic' mode='widthFix'></image>
+  <view>
+    <view class='mar-l-33 font-30'>{{course_title}}</view>
+    <view class='mar-l-33 font-30'> </view>
+    <view class='flex mar-l-33'>
+      <view class='price red font-36 bold'><text class=''>￥</text>{{course_price}}</view>
+      <view class='font-24 price-before gray'>原价：<text class='line-through'>￥{{course_originPrice}}</text></view>
+    </view>
+  </view>
+</view>
+<view class='content bg-fff mar-b-31 bor-tb-1 pad-b-30'>
+  <view class='flex center v-center'>
+    <image src='/images/yes_green.png' class='yes' mode='widthFix'></image>
+    <text class='font-30'>恭喜您，购买成功！</text>
+  </view>
+  <button bindtap="watchOrder" data-order-id='22222222222' class='bg-red white font-38'>查看订单</button>
+</view>
+
+<!-- <view class='content bg-fff mar-b-31 bor-tb-1 pad-b-30'>
+  <view class='lin-h-50 font-36 pad-tb-32'>
+    <text class='gang bg-red'></text>上课地点
+  </view>
+  <view class='flex v-center'>
+    <image src='/images/location.png' mode='widthFix' class='icon'></image>
+    <text class='font-30'>上海市浦东新区张衡路666弄2号楼201室</text>
+  </view>
+  <view class='flex v-center'>
+    <image src='/images/phone.png' mode='widthFix' class='icon'></image>
+    <text class='font-30'>021-58303589</text>
+  </view>
+</view> -->
+<location datas="{{props}}" />
+

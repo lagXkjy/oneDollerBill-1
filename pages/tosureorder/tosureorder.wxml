@@ -1,0 +1,50 @@
+<!--pages/buyed/buyed.wxml-->
+<view class='course bg-fff  flex pad-lr-30'>
+  <image src="{{course_banner}}" class='pic' mode='widthFix'></image>
+  <view>
+    <view class='mar-l-33 font-30'>{{course_title}}</view>
+     <view class='mar-l-33 font-30'>
+     <!-- 【8月通关A班】 --> 
+     <!-- <text class='white'>.</text> -->
+     </view> 
+    <view class='flex mar-l-33 mar-t-11'>
+      <view class='price red font-36 bold'><text class=''>￥</text>{{course_price}}</view>
+      <view class='font-24 price-before gray'>原价：<text class='line-through'>￥{{course_originPrice}}</text></view>
+    </view>
+  </view>
+</view>
+<view class='flex bor-t-1 v-center mar-t-33 pad-lr-32 font-30 bg-fff inpbox'>
+  <view class='preIN'>姓名:</view>
+  <input 
+  bindinput='inpName'
+  value='{{name}}'
+  placeholder='请输入姓名'></input>
+</view>
+<view class='flex bor-t-1 v-center pad-lr-32 font-30 bg-fff inpbox'>
+  <view class='preIN'>手机号:</view>
+  <input 
+  bindinput='inpPhone'
+  bindblur='blurPhone'
+  type='number'
+  value='{{phone}}'
+  placeholder='请输入手机号'></input>
+</view>
+<view class='flex bor-t-1 v-center pad-lr-32 font-30 bg-fff inpbox'>
+  <view class='preIN'>年龄:</view>
+  <input 
+  bindinput='inpAge'
+  value='{{age}}'
+  type='number'
+  placeholder='请输入年龄(选填)'></input>
+</view>
+<view class='flex bor-t-1 v-center pad-lr-32 font-30 bg-fff inpbox'>
+  <view class='preIN'>备注:</view>
+  <input 
+  bindinput='inpNote'
+  value='{{note}}'
+  placeholder='说些什么(选填)'></input>
+</view>
+<view class='flex fix-b bg-fff'>
+  <view class='flex5 red font-30'>实付款：￥ <text class='bold'>{{course_price}}</text></view>
+  <view bindtap='buy' class='flex3 font-38 t-center bg-red white'>确认付款</view>
+</view>
